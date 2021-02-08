@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="ACTV.Core.FrameWork.Entity\ACTV.Core.FrameWork.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ACTV.Core.FrameWork.cs</LastGenOutput>
+    </None>
+    <None Update="ACTV.Core.FrameWork.IRepository\ACTV.Core.FrameWork.IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ACTV.Core.FrameWork.IRepository.cs</LastGenOutput>
+    </None>
+    <None Update="ACTV.Core.FrameWork.IServices\ACTV.Core.FrameWork.IServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ACTV.Core.FrameWork.IServices.cs</LastGenOutput>
+    </None>
+    <None Update="ACTV.Core.FrameWork.Repository\ACTV.Core.FrameWork.Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ACTV.Core.FrameWork.Repository.cs</LastGenOutput>
+    </None>
+    <None Update="ACTV.Core.FrameWork.Services\ACTV.Core.FrameWork.Services.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ACTV.Core.FrameWork.Services.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ACTV.Core.FrameWork.IRepository\ACTV.Core.FrameWork.IRepository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ACTV.Core.FrameWork.IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Update="ACTV.Core.FrameWork.IServices\ACTV.Core.FrameWork.IServices.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ACTV.Core.FrameWork.IServices.tt</DependentUpon>
+    </Compile>
+    <Compile Update="ACTV.Core.FrameWork.Repository\ACTV.Core.FrameWork.Repository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ACTV.Core.FrameWork.Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Update="ACTV.Core.FrameWork.Services\ACTV.Core.FrameWork.Services.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ACTV.Core.FrameWork.Services.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
