@@ -269,6 +269,16 @@ namespace ACTV.Core.Model.Seed
                     }
                     #endregion
 
+
+                    if(!await myContext.Db.Queryable<Bangumi>().AnyAsync())
+                    {
+                        var data = JsonConvert.DeserializeObject<List<Bangumi>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "Bangumi"), Encoding.UTF8), setting);
+                        Console.WriteLine("Table:Bangumi created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:Bangumi already exists...");
+                    }
                     ConsoleHelper.WriteSuccessLine($"Done seeding database!");
                 }
 
