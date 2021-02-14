@@ -24,7 +24,7 @@ namespace ACTV.Core.Controllers
     [Route("api/Blog")]
     public class BlogController : Controller
     {
-        readonly IBlogArticleServices _blogArticleServices;
+        private readonly IBlogArticleServices _blogArticleServices;
         private readonly ILogger<BlogController> _logger;
 
         /// <summary>

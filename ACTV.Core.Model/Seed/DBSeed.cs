@@ -273,6 +273,8 @@ namespace ACTV.Core.Model.Seed
                     if(!await myContext.Db.Queryable<Bangumi>().AnyAsync())
                     {
                         var data = JsonConvert.DeserializeObject<List<Bangumi>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "Bangumi"), Encoding.UTF8), setting);
+
+                        myContext.GetEntityDB<Bangumi>().InsertRange(data);
                         Console.WriteLine("Table:Bangumi created success!");
                     }
                     else

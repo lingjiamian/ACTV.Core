@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ACTV.Core.Model.Models
 {
-    public class Bangumi:RootEntity
+    public class Bangumi:RootEntityTkey<int>
     {
         public string Title { set; get; }
 

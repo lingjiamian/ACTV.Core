@@ -13,6 +13,8 @@ namespace ACTV.Core.AutoMapper
         {
             CreateMap<BlogArticle, BlogViewModels>();
             CreateMap<BlogViewModels, BlogArticle>();
+            CreateMap<Bangumi, BangumiViewModels>();
+            CreateMap<BangumiViewModels, Bangumi>();
         }
     }
 }

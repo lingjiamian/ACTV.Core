@@ -135,6 +135,8 @@ namespace ACTV.Core
             app.UseSignalRSendMildd();
             // 记录ip请求
             app.UseIPLogMildd();
+
+            
             // 查看注入的所有服务
             app.UseAllServicesMildd(_services);
 
