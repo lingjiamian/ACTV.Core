@@ -12,7 +12,7 @@ namespace ACTV.Core.Model.ViewModels
 
         public int viewCount { set; get; }
 
-        public DateTime createTime { set; get; }
+        public string createTime { set; get; }
 
         public DateTime updateTime { set; get; }
     }

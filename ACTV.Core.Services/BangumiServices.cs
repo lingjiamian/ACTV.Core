@@ -4,6 +4,7 @@ using ACTV.Core.Model.Models;
 using ACTV.Core.Model.ViewModels;
 using ACTV.Core.Services.BASE;
 using AutoMapper;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +31,11 @@ namespace ACTV.Core.Services
             if(bangumiDetails != null)
             {
                 bangumiViewModels = _mapper.Map<BangumiViewModels>(bangumiDetails);
+                //var s = bangumiViewModels.createTime.GetDateTimeFormats("yyyy/MM/dd");
+                //var s = bangumiViewModels.createTime.ToShortDateString();
+                //DateTime dd = DateTime.Parse(s);
+                //bangumiViewModels.createTime = DateTime.Parse(bangumiViewModels.createTime.ToString("yyyy/MM/dd"));
+
                 //TODO: 获取视频评论
             }
 
