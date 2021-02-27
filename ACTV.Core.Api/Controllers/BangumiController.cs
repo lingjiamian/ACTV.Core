@@ -3,9 +3,6 @@ using ACTV.Core.Model;
 using ACTV.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ACTV.Core.Api.Controllers

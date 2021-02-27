@@ -274,14 +274,29 @@ namespace ACTV.Core.Model.Seed
                     {
                         var data = JsonConvert.DeserializeObject<List<Bangumi>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "Bangumi"), Encoding.UTF8), setting);
 
-                        myContext.GetEntityDB<Bangumi>().InsertRange(data);
+                        await myContext.GetEntityDB<Bangumi>().InsertRangeAsync(data);
                         Console.WriteLine("Table:Bangumi created success!");
                     }
                     else
                     {
                         Console.WriteLine("Table:Bangumi already exists...");
                     }
+
+                    if(!await myContext.Db.Queryable<Danmaku>().AnyAsync())
+                    {
+                        var data = JsonConvert.DeserializeObject<List<Danmaku>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "Danmaku"), Encoding.UTF8), setting);
+
+                        await myContext.GetEntityDB<Danmaku>().InsertRangeAsync(data);
+
+                        Console.WriteLine("Table:Danmaku created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:Danmaku already exites...");
+                    }
+
                     ConsoleHelper.WriteSuccessLine($"Done seeding database!");
+
                 }
 
                 Console.WriteLine();

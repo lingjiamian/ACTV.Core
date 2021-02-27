@@ -1,10 +1,9 @@
 ﻿using ACTV.Core.Common.Extensions;
+using ACTV.Core.IServices;
 using ACTV.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -16,10 +15,20 @@ namespace ACTV.Core.Api.Controllers
     [ApiController]
     public class Danmaku : ControllerBase
     {
+        private readonly IDanmakuServices iDanmakuService;
+        private readonly ILogger iLogger;
+        public Danmaku(IDanmakuServices iDanmakuService, ILogger iLogger)
+        {
+            this.iDanmakuService = iDanmakuService;
+            this.iLogger = iLogger;
+        }
+
+
         // GET: api/<Dammaku>
         [HttpGet]
-        public async Task<JsonResult> Get()
+        public async Task<JsonResult> Get(int Id, int Max)
         {
+            iDanmakuService.QueryByIDs
             List<DanmakuViewModels> list = new List<DanmakuViewModels>();
             DanmakuViewModels danmaku = new DanmakuViewModels
             {

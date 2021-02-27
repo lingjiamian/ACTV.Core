@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
+using System.Collections.Generic;
 
 namespace ACTV.Core.Model.Models
 {
@@ -16,6 +18,7 @@ namespace ACTV.Core.Model.Models
 
         public DateTime UpdateTime { set; get; }
 
-
+        [SugarColumn(IsIgnore = true)]
+        public List<Danmaku> Danmakus { set; get; }
     }
 }
