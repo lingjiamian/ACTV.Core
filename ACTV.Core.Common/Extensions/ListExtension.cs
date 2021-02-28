@@ -19,6 +19,7 @@ namespace ACTV.Core.Common.Extensions
         {
             var array = new object[lines.Count(), lambdas.Count()];
             var lineCounter = 0;
+            
             lines.ForEach(line =>
             {
                 for (var i = 0; i < lambdas.Length; i++)

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +13,11 @@ namespace ACTV.Core.Api.Controllers
 {
     [Route("api/[controller]/v3")]
     [ApiController]
-    public class Danmaku : ControllerBase
+    public class DanmakuController : Controller
     {
         private readonly IDanmakuServices iDanmakuService;
-        private readonly ILogger iLogger;
-        public Danmaku(IDanmakuServices iDanmakuService, ILogger iLogger)
+        private readonly ILogger<DanmakuController> iLogger;
+        public DanmakuController(IDanmakuServices iDanmakuService, ILogger<DanmakuController> iLogger)
         {
             this.iDanmakuService = iDanmakuService;
             this.iLogger = iLogger;
@@ -28,22 +28,13 @@ namespace ACTV.Core.Api.Controllers
         [HttpGet]
         public async Task<JsonResult> Get(int Id, int Max)
         {
-            iDanmakuService.QueryByIDs
+            //Max是获取的弹幕数量
+
+            var danmakuViewModelsList = (await iDanmakuService.QueryByBangumiIdToList(Id)).Take(Max).ToList();
+            
             List<DanmakuViewModels> list = new List<DanmakuViewModels>();
-            DanmakuViewModels danmaku = new DanmakuViewModels
-            {
-                id = "DDDDOAISJDOIFJ1231",
-                time = 5,
-                text = "明天吃什么",
-                mode = 0,
-                size = 25,
-                author = "DIYGOD",
-                color = 16777215
-            };
-
-            list.Add(danmaku);
-
-            var data2DArray = list.To2DArray(danmaku => danmaku.time, danmaku => danmaku.mode, danmaku => danmaku.color, danmaku => danmaku.id, danmaku => danmaku.text);
+         
+            var data2DArray = danmakuViewModelsList.To2DArray(danmaku => danmaku.time, danmaku => danmaku.type, danmaku => danmaku.color, danmaku => danmaku.uid, danmaku => danmaku.text);
             
             object res = new
             {

@@ -4,7 +4,6 @@ using ACTV.Core.Model.Models;
 using ACTV.Core.Model.ViewModels;
 using ACTV.Core.Services.BASE;
 using AutoMapper;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 

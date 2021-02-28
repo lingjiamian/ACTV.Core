@@ -8,17 +8,14 @@ namespace ACTV.Core.Model.ViewModels
 {
     public class DanmakuViewModels
     {
-        public string id { set; get; }
 
         public  string text { set; get; }
 
-        public string author { set; get; }
-
         public int time { set; get; }
 
-        public  int mode { set; get; }
+        public  int type { set; get; }
 
-        public int size { set; get; }
+        public int uid { set; get; }
 
         public int color { set; get; }
     }
