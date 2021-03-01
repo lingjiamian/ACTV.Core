@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using ACTV.Core.Model.Models;
+using System;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,7 +31,7 @@ namespace ACTV.Core.Api.Controllers
         public async Task<JsonResult> Get(int Id, int Max)
         {
             //Max是获取的弹幕数量
-
+            //TODO:应该返回的是实体，而不是视图模型？
             var danmakuViewModelsList = (await iDanmakuService.QueryByBangumiIdToList(Id)).Take(Max).ToList();
             
             List<DanmakuViewModels> list = new List<DanmakuViewModels>();
@@ -46,29 +48,42 @@ namespace ACTV.Core.Api.Controllers
         }
 
         // GET api/<Dammaku>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/<Dammaku>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] string text)
+        public async Task<IActionResult> Post(DanmakuPostModels danmakuPostModels)
         {
+            //因为命名问题没法做映射
+            Danmaku danmaku = new Danmaku();
+            danmaku.Text = danmakuPostModels.text;
+            danmaku.Time = danmakuPostModels.time;
+            danmaku.UpdateTime = DateTime.Now;
+            danmaku.CreateTime = DateTime.Now;
+            danmaku.Author = danmakuPostModels.author;
+            danmaku.BangumiId = danmakuPostModels.id;
+            danmaku.Type = danmakuPostModels.type;
+            //TODO:先用token查询用户，再写入用户id
+            danmaku.UserId = 1;
+
+            iDanmakuService.Add(danmaku)
             return Ok();
         }
 
         // PUT api/<Dammaku>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<Dammaku>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<Dammaku>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

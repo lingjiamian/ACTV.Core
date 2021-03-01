@@ -1,4 +1,6 @@
-﻿namespace ACTV.Core.Model.Models
+﻿using System;
+
+namespace ACTV.Core.Model.Models
 {
     public class Danmaku:RootEntityTkey<int>
     {
@@ -12,6 +14,9 @@
 
         public double Time { set; get; }
 
+        public DateTime CreateTime { set; get; }
+
+        public DateTime UpdateTime { set; get; }
 
         public int BangumiId { set; get; }
 
