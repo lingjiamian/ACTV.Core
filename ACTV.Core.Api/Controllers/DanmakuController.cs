@@ -62,16 +62,25 @@ namespace ACTV.Core.Api.Controllers
             Danmaku danmaku = new Danmaku();
             danmaku.Text = danmakuPostModels.text;
             danmaku.Time = danmakuPostModels.time;
-            danmaku.UpdateTime = DateTime.Now;
-            danmaku.CreateTime = DateTime.Now;
             danmaku.Author = danmakuPostModels.author;
             danmaku.BangumiId = danmakuPostModels.id;
             danmaku.Type = danmakuPostModels.type;
+            danmaku.Color = danmakuPostModels.color;
+            danmaku.UpdateTime = DateTime.Now;
+            danmaku.CreateTime = DateTime.Now;
             //TODO:先用token查询用户，再写入用户id
             danmaku.UserId = 1;
 
-            iDanmakuService.Add(danmaku)
-            return Ok();
+            await iDanmakuService.Add(danmaku);
+
+            //return new JsonResult(new
+            //{
+            //    code = 100,
+            //});
+
+            return Ok(new { 
+                code = 0
+            });
         }
 
         // PUT api/<Dammaku>/5
